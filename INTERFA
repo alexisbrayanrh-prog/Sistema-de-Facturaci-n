@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión - Sistema de Facturación</title>
+</head>
+<body>
+
+    <center>
+        <h1>Sistema de Facturación</h1>
+        <h2>Acceso de Usuario</h2>
+
+        <!-- Formulario de Login -->
+        <fieldset style="width: 300px; text-align: left; padding: 20px;">
+            <legend>Credenciales</legend>
+            
+            <form onsubmit="validarLogin(event)">
+                <label>Usuario:</label><br>
+                <input type="text" id="usuario" placeholder="Ej. admin" required><br><br>
+
+                <label>Contraseña:</label><br>
+                <input type="password" id="password" placeholder="Ej. 12345" required><br><br>
+
+                <button type="submit">Entrar al Sistema</button>
+            </form>
+            
+            <p id="mensajeError" style="color: red; font-size: 14px;"></p>
+        </fieldset>
+    </center>
+
+    <script>
+        function validarLogin(event) {
+            // Evitar que la página se recargue por defecto
+            event.preventDefault();
+
+            const user = document.getElementById('usuario').value.trim();
+            const pass = document.getElementById('password').value.trim();
+            const errorText = document.getElementById('mensajeError');
+
+            // Credenciales de prueba (puedes cambiarlas por las tuyas o conectarlas a base de datos después)
+            const usuarioValido = "admin";
+            const passwordValida = "12345";
+
+            if (user === usuarioValido && pass === passwordValida) {
+                alert("¡Acceso concedido! Redirigiendo al sistema de facturación...");
+                
+                // Aquí simulamos el cambio a tu archivo de facturación principal (index.html)
+                window.location.href = "proc.html"; 
+            } else {
+                errorText.innerText = "Usuario o contraseña incorrectos.";
+            }
+        }
+    </script>
+
+</body>
+</html>
